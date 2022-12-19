@@ -377,7 +377,7 @@ static int send_reprogramming_enable_cmd(hid_device *dev)
 		res = 0;
 	}
 	else{
-		printf("USB_HID_ENABLE_REPROGRAM command failed: %ls\n", hid_error(dev));
+		printf("USB_HID_ENABLE_REPROGRAM command failed\n");
 	}
 	return res;
 }
@@ -390,7 +390,7 @@ static int send_poison_flash_cmd(hid_device *dev){
 		res = 0;
 	}
 	else{
-		printf("Failed to send USB_HID_POISON_FLASH command: %ls\n", hid_error(dev));
+		printf("Failed to send USB_HID_POISON_FLASH command\n");
 	}
 	return res;
 }
@@ -403,7 +403,7 @@ static int send_reset_device_cmd(hid_device *dev){
 		res = 0;
 	}
 	else{
-		printf("Failed to send USB_HID_RESET_FLASH_BURNER_DEVICE command: %ls\n", hid_error(dev));
+		printf("Failed to send USB_HID_RESET_FLASH_BURNER_DEVICE command.\n");
 	}
 	return res;
 }
@@ -417,7 +417,7 @@ static int send_setup_download_cmd(hid_device *dev)
 		res = 0;
 	}
 	else{
-		printf("Failed to send USB_HID_SETUP_DOWNLOAD_DATA command: %ls\n", hid_error(dev));
+		printf("Failed to send USB_HID_SETUP_DOWNLOAD_DATA command\n");
 	}
 	return res;
 }
@@ -425,7 +425,7 @@ static int send_setup_download_cmd(hid_device *dev)
 static hid_device* get_hid_device(void){
   hid_device *dev = hid_open(TUSB9260_VENDOR_ID, TUSB9260_PRODUCT_ID, NULL);
   if(NULL == dev){
-    printf("Failed to open HID device: %ls\n", hid_error(dev));
+    printf("Failed to open HID device.\n");
   }
   return dev;
 }
@@ -644,7 +644,7 @@ static bool GetOutBuffer (void)
   //Replace the Device Descriptor VID with the one defined by the user.
   if(!ExtDescriptors_flag)
   {
-   VID=new char [4];
+   VID=new char [5];
    status = sprintf(VID,"0451");
   }
   getIDs (VID);
@@ -656,7 +656,7 @@ static bool GetOutBuffer (void)
   //Replace the Device Descriptor PID with the one defined by the user.
   if(!ExtDescriptors_flag)
   {
-   PID=new char [4];
+   PID=new char [5];
    status = sprintf(PID,"9261");
    }
    getIDs (PID);
@@ -668,7 +668,7 @@ static bool GetOutBuffer (void)
    //Get the Manufacture info and build the correspondant string descriptor.//SWAT:Change "ManufactureID" for dinamic string
   if(!ExtDescriptors_flag)
   {
-   ManufactureID=new char [17];
+   ManufactureID=new char [18];
    status = sprintf(ManufactureID,"Texas Instruments");
   }
    Manufacture_Data = new uchar [( (strlen ( ManufactureID )) * 2 ) +2];
@@ -690,7 +690,7 @@ static bool GetOutBuffer (void)
    
   if(!ExtDescriptors_flag)
   {
-   ProductID=new char [22];
+   ProductID=new char [24];
    status = sprintf(ProductID,"TUSB9260 USB 3 to SATA");
    }
    Product_Data = new uchar [( (strlen ( ProductID )) * 2 ) +2];
